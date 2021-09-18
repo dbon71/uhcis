@@ -24,10 +24,10 @@ except:
     first_serv = 0
 try:
     second_serv_cost = services[second_serv]
-    print(f'Service 2: {second_service}, ${second_serv_cost}')
+    print(f'Service 2: {second_serv}, ${second_serv_cost}')
 except:
     print('Service 2: No service')
-    second_service_cost = 0
+    second_serv_cost = 0
 
-total_cost = first_service_cost + second_service_cost
+total_cost = first_serv_cost + second_serv_cost
 print(f'\nTotal: ${total_cost}')
