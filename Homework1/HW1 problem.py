@@ -1,12 +1,10 @@
 #David Bonilla
 #CIS2348 Ratner
 #PSID:1913106
-#Current Code
 print('Current Day')
 current_month = int(input())
 current_day = int(input())
 current_year = int(input())
-#Birthday code
 birth_month = int(input())
 birth_day = int(input())
 birth_year = int(input())
