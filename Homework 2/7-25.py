@@ -1,7 +1,7 @@
 #David Bonilla
 #CIS2348 Ratner
 #PSID:1913106
-#define exact change function
+#defines the conversion and remainder of each currency
 def exact_change(user_total):
     num_dollars = user_total // 100
     user_total %= 100
@@ -13,24 +13,23 @@ def exact_change(user_total):
     user_total %= 5
     num_pennies = user_total
     return(num_dollars, num_quarters, num_dimes, num_nickels, num_pennies)
+    #ask user for input amount
 if __name__ == '__main__':
     input_val = int(input())
-    num_dollars, num_quarters, num_dimes, num_nickels, num_pennies = exact_change(input_val) #recall exact_change function
-
-    #define output statements to output number of exact_change variables:
-    #num_dollars, num_quarters, num_dimes, num_nickels, num_pennies
+    num_dollars, num_quarters, num_dimes, num_nickels, num_pennies = exact_change(input_val)
+#this defines the change for each curreny and the amount
     if input_val <=0:
         print('no change')
 
     else:
         if num_dollars > 1:
-            print('%d dollars' % num_dollars)
+            print('%d dollars' % numdollars)
         elif num_dollars == 1:
             print('%d dollar' % num_dollars)
 
         if num_quarters > 1:
             print('%d quarters' % num_quarters)
-        elif num_quarters ==1: # if number of quarters equal 1
+        elif num_quarters ==1:
             print('%d quarter' % num_quarters)
 
         if num_dimes > 1:
@@ -46,4 +45,4 @@ if __name__ == '__main__':
         if num_pennies >1:
             print('%d pennies' % num_pennies)
         elif num_pennies ==1:
-            print('%d penny' % num_pennies) 
+            print('%d penny' % num_pennies)
