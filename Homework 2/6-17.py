@@ -1,11 +1,11 @@
 #David Bonilla
 #CIS2348 Ratner
 #PSID:1913106
+#input for password
 word = input()
-
-
 password = ''
 
+#loops to check if each character needs to be changed to a different element
 for character in word:
 
     if(character=='i'):
@@ -25,5 +25,5 @@ for character in word:
 
     else:
         password += character
-
+#print method strengthens password
 print(password + 'q*s')
