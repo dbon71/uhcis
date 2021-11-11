@@ -6,7 +6,7 @@
 class FoodItem:
 
 	#constructor with default parameters of food item
-	def __init__(self, name=None , fat=0.0, carbs=0.0, protein=0.0, servings=1.0):
+	def __init__(self, name=None , fat=0, carbs=0, protein=0, servings=1):
 		# Initializing attributes
 		self.name = name
 		self.fat = fat
