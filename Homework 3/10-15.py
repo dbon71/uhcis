@@ -13,12 +13,10 @@ class Team:
     def get_win_percentage(self):
         return self.team_wins / (self.team_wins + self.team_losses)
 
-
 if __name__ == "__main__":
 
     #element identification
     team = Team()
-
     team_name = input()
     team_wins = int(input())
     team_losses = int(input())
