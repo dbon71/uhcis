@@ -35,7 +35,7 @@ new_manufac=(sorted(ManufacturerList, key=itemgetter(0)))
 new_price=(sorted(PriceList, key=itemgetter(0)))
 new_service=(sorted(ServDateList, key=itemgetter(0)))
 
-#adding the prices and service dates to the full inventory list
+#loop for adding the prices and service dates to the full inventory list
 for a in range(0,len(new_manufac)):
     new_manufac[a].append(PriceList[a][1])
 
@@ -60,7 +60,7 @@ phoneList = []
 laptopList = []
 towerList = []
 
-#search, organize, and append items into their correct list
+#loop to search, organize, and append items into their correct list
 for a in range(0, len(itemTypes)):
     if itemTypes[a][2] == "phone":
         phoneList.append(itemTypes[a])
@@ -91,7 +91,7 @@ with open('TowerInventory.csv', 'w') as newFile:
 #list container for damaged products
 damagedList = []
 
-#appending damaged items
+# loop for appending damaged items
 for a in range(0, len(itemTypes)):
     if itemTypes[a][3] == "damaged":
         damagedList.append(itemTypes[a])
@@ -106,23 +106,26 @@ with open('DamagedInventory.csv', 'w') as newFile:
     for a in range(0, len(damagedList)):
         damagedInventorywrite.writerow(damagedList[a])
 
-#input for the user to list item manufacturer and type and container for item
+#input the user to list item manufacturer and type with a container for item
 inputManufacturer = str(input("Enter your manufacturer: "))
 inputType = str(input("Please enter your item type: "))
 userItem = []
 
-#unless q is pressed to quit the program, continue
+#once q is pressed to quit the program, if not continue
 while(inputManufacturer != "q"):
+
+    #loop to check if user's input in completeList to append to userItem
     for a in range(0, len(completeList)):
         if inputManufacturer in completeList[a] and inputType in completeList[a]:
             userItem.append(completeList[a])
 
-#if there was no input to list, product does not exist
+#output the user's chosen item, unless input isn't on the list then product does not exist
     if len(userItem) != 0:
         userItem = sorted(userItem, key=itemgetter(4), reverse=True)
         print("Your item is: ", userItem[0])
     else:
         print("No such item in inventory")
 
+    #re-prompting the user for a different item unless q is pressed
     inputManufacturer = str(input("Enter your manufacturer, or q to exit query:"))
     inputType = str(input("Please enter your item type: "))
