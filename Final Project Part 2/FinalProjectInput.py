@@ -105,3 +105,24 @@ with open('DamagedInventory.csv', 'w') as newFile:
 
     for a in range(0, len(damagedList)):
         damagedInventorywrite.writerow(damagedList[a])
+
+#input for the user to list item manufacturer and type and container for item
+inputManufacturer = str(input("Enter your manufacturer: "))
+inputType = str(input("Please enter your item type: "))
+userItem = []
+
+#unless q is pressed to quit the program, continue
+while(inputManufacturer != "q"):
+    for a in range(0, len(completeList)):
+        if inputManufacturer in completeList[a] and inputType in completeList[a]:
+            userItem.append(completeList[a])
+
+#if there was no input to list, product does not exist
+    if len(userItem) != 0:
+        userItem = sorted(userItem, key=itemgetter(4), reverse=True)
+        print("Your item is: ", userItem[0])
+    else:
+        print("No such item in inventory")
+
+    inputManufacturer = str(input("Enter your manufacturer, or q to exit query:"))
+    inputType = str(input("Please enter your item type: "))
