@@ -64,7 +64,7 @@ item5 = fullInventory[12] + fullInventory[13]+ fullInventory[14]
 item6 = fullInventory[15] + fullInventory[16]+ fullInventory[17]
 item7 = fullInventory[18] + fullInventory[19]+ fullInventory[20]
 
-#arranging specific list items
+#arranging specific list items in order to prevent duplicates
 item1 = item1[0],item1[5],item1[6],item1[3],item1[1]
 item2 = item2[0],item2[5],item2[6],item2[3],item2[1]
 item3 = item3[0],item3[5],item3[6],item3[3],item3[1]
@@ -73,7 +73,7 @@ item5 = item5[0],item5[5],item5[6],item5[3],item5[1]
 item6 = item6[0],item6[5],item6[6],item6[1],item6[3],item6[7]
 item7 = item7[0],item7[5],item7[6],item7[1],item7[3]
 
-#order of list
+#order of list items
 fullInventory = [item3, item2, item4, item7, item6, item1, item5]
 print(fullInventory)
 
@@ -85,21 +85,21 @@ for x in fullInventory:
     if x[2] == "laptop":
         print('Laptop inventory:', x)
 
-#list for all damaged items in inventory
-damagedInventory = []
+#list for all items past service date in inventory
+pastServiceDateInventory = []
 
 #for loop to check full inventory for past service items
 for x in fullInventory:
     if x[4] == "5/27/2022":
         print('Past service date:', x)
 
+#list for all damaged items in inventory
+damagedInventory = []
+
 #for loop to check full inventory damaged items
 for x in fullInventory:
     if x[0] == "7346234":
         print('Damaged inventory:', x)
-
-#list for all items past service date in inventory
-pastServiceDateInventory = []
 
 #date time for the day and time program was executed
 x = datetime.datetime.now()
@@ -110,22 +110,29 @@ manufacturer = str(input('Who is your manufacturer:'))
 itemType = str(input('What is your item:'))
 
 goodItem=[]
+
 #while loop checking inventory if user hasn't quit
 while manufacturer != "q":
 
-    #for loop to check full inventory for items
-    for x in fullInventory:
+    #to check if user input matches any of the parameters
+    if manufacturer != ("Dell","Apple","Lenovo","Samsung") or itemType != ("laptop","phone","tower"):
+        #for loop to check full inventory for items
+        for x in fullInventory:
 
-        #for loop to check each element in full inventory
-        for item in x:
+            #for loop to check each element in full inventory
+            for item in x:
 
-            #if and elif statements to include only good items
-            if item == manufacturer or item == itemType:
-                goodItem.append(x)
-                print("Your item is:", x)
-            
-            
+                #if and elif statements to include existing items in inventory
+                if item in manufacturer or item in itemType:
+                    goodItem.append(x)
+                    print("Your item is:", x)
+                elif item in x == "damaged":
+                    print("You may also consider:", goodItem)
+                elif item in x == "5/27/2022":
+                    print("You may also consider:", goodItem)
 
+    else:
+        print("No such item in inventory")
         
     #re-prompting the user with the option to quit
     manufacturer = str(input('Enter another manufacturer or press q to quit:'))
