@@ -54,6 +54,8 @@ for x in range(0,len(man)):
 
 #sorting elements by ID, re-arragning list elements, arranging them in a list
 fullInventory.sort()
+
+#concatenate organized elements
 item1 = fullInventory[0] + fullInventory[1]+ fullInventory[2]
 item2 = fullInventory[3] + fullInventory[4]+ fullInventory[5]
 item3 = fullInventory[6] + fullInventory[7]+ fullInventory[8]
@@ -61,7 +63,8 @@ item4 = fullInventory[9] + fullInventory[10]+ fullInventory[11]
 item5 = fullInventory[12] + fullInventory[13]+ fullInventory[14]
 item6 = fullInventory[15] + fullInventory[16]+ fullInventory[17]
 item7 = fullInventory[18] + fullInventory[19]+ fullInventory[20]
- 
+
+#arranging specific list items
 item1 = item1[0],item1[5],item1[6],item1[3],item1[1]
 item2 = item2[0],item2[5],item2[6],item2[3],item2[1]
 item3 = item3[0],item3[5],item3[6],item3[3],item3[1]
@@ -70,7 +73,8 @@ item5 = item5[0],item5[5],item5[6],item5[3],item5[1]
 item6 = item6[0],item6[5],item6[6],item6[1],item6[3],item6[7]
 item7 = item7[0],item7[5],item7[6],item7[1],item7[3]
 
-fullInventory = (item3, item2, item4, item7, item6, item1, item5)
+#order of list
+fullInventory = [item3, item2, item4, item7, item6, item1, item5]
 print(fullInventory)
 
 #list for all laptop items in inventory
@@ -103,25 +107,31 @@ print(x)
 
 #input the user for manufacturer and item type
 manufacturer = str(input('Who is your manufacturer:'))
-item = str(input('What is your item:'))
+itemType = str(input('What is your item:'))
 
-itemExist =[] 
-
+goodItem=[]
 #while loop checking inventory if user hasn't quit
 while manufacturer != "q":
 
     #for loop to check full inventory for items
     for x in fullInventory:
 
-        #if and elif to check if item exists, doesn't exist, or suggesting an alternative
-        if manufacturer in fullInventory and item in fullInventory:
-            itemExist.append(fullInventory[x])
-            print("Your item is:", itemExist )
-        elif x == "damaged" or x == "5/27/2022":
-            print("You may also want to consider", itemExist)
-        elif manufacturer not in fullInventory or item not in fullInventory:
-            print("No such item in inventory")
+        #for loop to check each element in full inventory
+        for item in x:
+
+            #if and elif statements to include only good items
+            if item == manufacturer or item == itemType:
+                goodItem.append(x)
+                print("Your item is:", x)
+            
+            
+
         
     #re-prompting the user with the option to quit
     manufacturer = str(input('Enter another manufacturer or press q to quit:'))
-    item = str(input('Enter another item or press q to quit:'))
+    if manufacturer == "q":
+        break
+    else:
+        item = str(input('Enter another item or press q to quit:'))
+        continue
+    
