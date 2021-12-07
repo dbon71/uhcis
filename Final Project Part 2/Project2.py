@@ -106,8 +106,7 @@ x = datetime.datetime.now()
 print(x)
 
 #input the user for manufacturer and item type
-manufacturer = str(input('Who is your manufacturer:'))
-itemType = str(input('What is your item:'))
+manufacturer, itemType = (input('Who is your manufacturer and What is your item: ').split(" "))
 
 goodItem=[]
 
